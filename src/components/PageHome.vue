@@ -1,6 +1,8 @@
 <template>
-  <h2 class="text-center">Welcome to the Forum</h2>
-  <ThreadList :threads="threads"/>
+  <div class="container">
+    <h2>Welcome to the Forum</h2>
+    <ThreadList :threads="threads"/>
+  </div>
 </template>
 
 <script>
