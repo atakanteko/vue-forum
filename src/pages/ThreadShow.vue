@@ -8,7 +8,8 @@
 
 <script>
 import sourceData from "@/data.json";
-import { PostList, PostEditor } from "@/components";
+import PostList from "@/components/PostList";
+import PostEditor from "@/components/PostEditor";
 
 export default {
   name: "ThreadShow",

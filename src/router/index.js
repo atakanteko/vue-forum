@@ -1,4 +1,7 @@
-import { Home, ThreadShow, NotFound } from "@/pages";
+import Home from "@/pages/Home";
+import ThreadShow from "@/pages/ThreadShow";
+import NotFound from "@/pages/NotFound";
+
 import { createRouter, createWebHistory } from "vue-router";
 import sourceData from '@/data.json';
 

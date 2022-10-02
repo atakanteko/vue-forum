@@ -23,8 +23,8 @@
         </div>
       </div>
 
-      <div class="post-date text-faded" :title="humanFriendlyDate(post.publishedAt)">
-        {{diffForHumans(post.publishedAt)}}
+      <div class="post-date text-faded">
+        <AppDate :timestamp="post.publishedAt" />
       </div>
 
     </div>
@@ -34,11 +34,8 @@
 
 <script>
 import sourceData from '@/data.json'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import localizeDate from 'dayjs/plugin/localizedFormat'
-dayjs.extend(localizeDate)
-dayjs.extend(relativeTime)
+import AppDate from "@/components/AppDate";
+
 export default {
   name: "PostList",
   inject: ['dateFormatter'],
@@ -47,6 +44,9 @@ export default {
       required: true,
       type: Array,
     },
+  },
+  components: {
+    AppDate,
   },
   data() {
     return {
@@ -57,12 +57,6 @@ export default {
     userById(userId) {
       return this.users.find(p => p.id === userId)
     },
-    diffForHumans(timestamp) {
-      return this.dateFormatter.unix(timestamp).fromNow()
-    },
-    humanFriendlyDate(timestamp) {
-      return this.dateFormatter.unix(timestamp).format('llll')
-    }
   },
 }
 </script>

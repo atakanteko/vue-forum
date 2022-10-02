@@ -20,7 +20,9 @@
             <p class="text-xsmall">
               <a href="#">{{userById(thread.userId).name}}</a>
             </p>
-            <p class="text-xsmall text-faded">{{thread.publishedAt}}</p>
+            <p class="text-xsmall text-faded">
+              <app-date :timestamp="thread.publishedAt" />
+            </p>
           </div>
         </div>
       </div>
@@ -30,9 +32,13 @@
 
 <script>
 import sourceData from "@/data.json";
+import AppDate from "@/components/AppDate";
 
 export default {
   name: "ThreadList",
+  components: {
+    AppDate,
+  },
   data() {
     return {
       posts: sourceData.posts,
