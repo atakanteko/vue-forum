@@ -39,9 +39,9 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import localizeDate from 'dayjs/plugin/localizedFormat'
 dayjs.extend(localizeDate)
 dayjs.extend(relativeTime)
-
 export default {
   name: "PostList",
+  inject: ['dateFormatter'],
   props: {
     posts: {
       required: true,
@@ -58,10 +58,10 @@ export default {
       return this.users.find(p => p.id === userId)
     },
     diffForHumans(timestamp) {
-      return dayjs.unix(timestamp).fromNow()
+      return this.dateFormatter.unix(timestamp).fromNow()
     },
     humanFriendlyDate(timestamp) {
-      return dayjs.unix(timestamp).format('llll')
+      return this.dateFormatter.unix(timestamp).format('llll')
     }
   },
 }
