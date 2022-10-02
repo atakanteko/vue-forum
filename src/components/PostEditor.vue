@@ -43,7 +43,7 @@ export default {
         userId: 'ALXhxjwgY9PinwNGHpfai6OWyDu2'
       }
       this.$emit('save', { post } )
-      this.newPostText=''
+      this.text=''
     }
   },
 }
