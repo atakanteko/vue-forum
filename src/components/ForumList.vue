@@ -2,19 +2,19 @@
   <div class="col-full">
     <div class="forum-list">
       <h2 class="list-title">
-        <a href="#">Forums</a>
+        <a href="#">{{ categoryName }}</a>
       </h2>
 
       <div v-for="forum in forums" :key="forum.id" class="forum-listing" >
 
         <div class="forum-details">
           <router-link class="text-xlarge"
-                       :to="{name: 'Forum', params:{id: forum.id}}"
+                       :to="{ name: 'Forum', params: { id: forum.id } }"
           >
-            {{forum.name}}
+            {{ forum.name }}
           </router-link>
           <p>
-            {{forum.description}}
+            {{ forum.description }}
           </p>
 
         </div>
@@ -22,7 +22,7 @@
 
         <div class="threads-count">
           <p class="count">
-            {{forum.threads?.length ? forum.threads?.length : '0'}}
+            {{ forum.threads?.length ? forum.threads?.length : '0' }}
           </p> {{ forumThreadWord(forum) }}
         </div>
 
@@ -43,6 +43,10 @@ export default {
       required: true,
       type: Array,
     },
+    categoryName: {
+      required: true,
+      type: String
+    }
   },
   methods: {
     forumThreadWord(forum) {

@@ -1,20 +1,20 @@
 <template>
     <h2>Welcome to the Forum</h2>
-    <forum-list :forums="forums"/>
+    <category-list :categories="categories"/>
 </template>
 
 <script>
 import sourceData from '@/data.json'
-import ForumList from "@/components/ForumList";
+import CategoryList from "@/components/CategoryList";
 
 export default {
   name: "HomePage",
   components: {
-    ForumList
+    CategoryList
   },
   data() {
     return {
-      forums: sourceData.forums,
+      categories: sourceData.categories,
     }
   },
 }
