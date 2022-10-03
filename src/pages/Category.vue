@@ -1,9 +1,9 @@
 <template>
-  <forum-list v-for="category in categories"
-              :key="category.id"
+  <div class="col-full push-top">
+    <h1>{{ category.name }}</h1>
+  </div>
+  <forum-list :category-name="category.name"
               :forums="getForums(category.id)"
-              :category-name="category.name"
-              :id="category.id"
   />
 </template>
 
@@ -12,15 +12,20 @@ import sourceData from "@/data.json";
 import ForumList from "@/components/ForumList";
 
 export default {
-  name: "CategoryList",
+  name: "CategoryPage",
   components: {
     ForumList,
   },
   props: {
-    categories: {
+    id:{
       required: true,
-      type: Array,
+      type: String,
     },
+  },
+  computed: {
+    category() {
+      return sourceData.categories.find(category => category.id === this.id)
+    }
   },
   methods: {
     getForums(categoryId) {

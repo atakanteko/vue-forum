@@ -2,7 +2,10 @@
   <div class="col-full">
     <div class="forum-list">
       <h2 class="list-title">
-        <a href="#">{{ categoryName }}</a>
+        <router-link v-if="id" :to="{name: 'Category', params:{ id: id } }">
+          {{ categoryName }}
+        </router-link>
+        <span v-else>{{ categoryName }}</span>
       </h2>
 
       <div v-for="forum in forums" :key="forum.id" class="forum-listing" >
@@ -39,6 +42,10 @@
 export default {
   name: "ForumList",
   props: {
+    id:{
+      required: false,
+      type: String,
+    },
     forums: {
       required: true,
       type: Array,
